@@ -2,7 +2,7 @@
 import json
 import numpy as np
 from tensorflow.keras.utils import to_categorical
-from train.config import COLOR_CATEGORIES
+from .config import COLOR_CATEGORIES
 
 def load_data(filepath):
     with open(filepath, 'r') as file:

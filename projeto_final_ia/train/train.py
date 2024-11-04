@@ -3,8 +3,8 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow.keras.optimizers import Adam
-from train.preprocess import load_data
-from train.config import EPOCHS, BATCH_SIZE, LEARNING_RATE
+from .preprocess import load_data
+from .config import EPOCHS, BATCH_SIZE, LEARNING_RATE
 
 def create_model():
     model = Sequential([
@@ -15,10 +15,10 @@ def create_model():
     return model
 
 def train_model():
-    entradas, respostas = load_data('train/data/colors.json')
+    entradas, respostas = load_data('data/colors.json')
     model = create_model()
     model.fit(entradas, respostas, epochs=EPOCHS, batch_size=BATCH_SIZE)
-    model.save('train/model/color_model.h5')
+    model.save('model/color_model.h5')
 
 if __name__ == '__main__':
     train_model()

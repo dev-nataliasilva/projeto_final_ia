@@ -1,9 +1,9 @@
 # inference/predict.py
 import numpy as np
 import tensorflow as tf
-from inference.config import COLOR_CATEGORIES
+from .config import COLOR_CATEGORIES
 
-def load_model():
+def load_model():    
     return tf.keras.models.load_model('inference/model/color_model.h5')
 
 def predict_color(rgb_values):
