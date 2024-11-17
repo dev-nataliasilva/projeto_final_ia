@@ -5,6 +5,7 @@ from tensorflow.keras.layers import Dense
 from tensorflow.keras.optimizers import Adam
 from .preprocess import load_data
 from .config import EPOCHS, BATCH_SIZE, LEARNING_RATE
+import os
 
 def create_model():
     model = Sequential([
@@ -15,10 +16,12 @@ def create_model():
     return model
 
 def train_model():
-    entradas, respostas = load_data('data/colors.json')
+    filepath = os.path.join(os.path.dirname(__file__), 'data', 'colors.json')
+    entradas, respostas = load_data(filepath)
     model = create_model()
     model.fit(entradas, respostas, epochs=EPOCHS, batch_size=BATCH_SIZE)
-    model.save('model/color_model.h5')
+    filepath = os.path.join(os.path.dirname(__file__), 'model', 'color_model.h5')
+    model.save(filepath)
 
 if __name__ == '__main__':
     train_model()

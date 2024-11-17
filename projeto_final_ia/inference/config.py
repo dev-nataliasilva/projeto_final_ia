@@ -1,4 +1,4 @@
 # config.py
 COLOR_CATEGORIES = [
-    'Vermelho', 'Verde', 'Azul',
+    'Branco', 'Preto', 'Azul', 'Vermelho', 'Verde', 'Laranja', 'Amarelo', 'Roxo', 'Marrom'
 ]
