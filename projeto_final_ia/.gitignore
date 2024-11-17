@@ -1,0 +1,38 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+*.log
+
+# Virtualenv
+venv/
+env/
+.venv/
+.env/
+
+# MacOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+
+# Database files
+*.db
+*.sqlite3
+
+# Django secret keys and other sensitive files
+*.env
+*.local
