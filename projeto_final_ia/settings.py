@@ -4,12 +4,16 @@ Django settings for projeto_final_ia project.
 
 import sys
 from pathlib import Path
+import os
 
 # Caminho para o diretório do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Adiciona a pasta inference ao Python path
 sys.path.append(str(BASE_DIR / "inference"))
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Configurações básicas
 SECRET_KEY = 'django-insecure-o)t8bpups7nbzsfnh#jw+b=px$a1iq0rtp7!cnr1yv*+%8!bie'
