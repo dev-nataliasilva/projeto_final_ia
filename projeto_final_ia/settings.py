@@ -13,7 +13,7 @@ sys.path.append(str(BASE_DIR / "inference"))
 
 # Configurações básicas
 SECRET_KEY = 'django-insecure-o)t8bpups7nbzsfnh#jw+b=px$a1iq0rtp7!cnr1yv*+%8!bie'
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = []
 
 # Aplicativos instalados - apenas o necessário para uma API
