@@ -14,7 +14,11 @@ sys.path.append(str(BASE_DIR / "inference"))
 # Configurações básicas
 SECRET_KEY = 'django-insecure-o)t8bpups7nbzsfnh#jw+b=px$a1iq0rtp7!cnr1yv*+%8!bie'
 DEBUG = False
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'ondesalvei-afacdb17af64.herokuapp.com',  # Adicione este domínio
+    #'localhost',  # Para desenvolvimento local
+    #'127.0.0.1',  # Para desenvolvimento local
+]
 
 # Aplicativos instalados - apenas o necessário para uma API
 INSTALLED_APPS = [    
@@ -29,6 +33,7 @@ INSTALLED_APPS = [
 # Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
     'django.middleware.common.CommonMiddleware',
 ]
 
