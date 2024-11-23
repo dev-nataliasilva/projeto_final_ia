@@ -24,7 +24,7 @@ def create_model():
     )
     return model
 
-def plot_training_history(history):
+def plot_training_history(history, timestamp):
     """
     Gera gráficos de perda e acurácia durante o treinamento.
     """
@@ -55,8 +55,7 @@ def plot_training_history(history):
     plt.tight_layout()
 
     # Salvar os gráficos em um arquivo com o número de épocas no nome
-    plt.savefig(os.path.join(os.path.dirname(__file__), 'loss_accuracy_plot_results', f'loss_accuracy_plot_{EPOCHS}.png')); plt.show()
-    plt.show()
+    plt.savefig(os.path.join(os.path.dirname(__file__), 'loss_accuracy_plot_results', f'{EPOCHS}_{timestamp}_loss_accuracy_plot.png')); plt.show()
 
 def train_model():
     """
@@ -78,13 +77,13 @@ def train_model():
     timestamp = datetime.now().strftime('%Y%m%d_%H%M')
 
     # Gerar o caminho completo para o arquivo com a data e hora no nome
-    model_filepath = os.path.join(os.path.dirname(__file__), 'model', f'{timestamp}_color_model.h5')
+    model_filepath = os.path.join(os.path.dirname(__file__), 'model', f'{EPOCHS}_{timestamp}_color_model.h5')
 
     # Salvar o modelo treinado
     model.save(model_filepath)
 
     # Gerar gráficos de perda e acurácia
-    plot_training_history(history)
+    plot_training_history(history, timestamp)
 
 if __name__ == '__main__':
     train_model()
