@@ -1,5 +1,5 @@
 # config.py
-EPOCHS = 15
+EPOCHS = 50
 BATCH_SIZE = 32
 LEARNING_RATE = 0.001
 
