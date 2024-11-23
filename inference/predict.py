@@ -14,6 +14,9 @@ def predict_color(rgb_values):
 
 # Exemplo de uso:
 if __name__ == '__main__':
-    rgb_values = [255, 0, 0]  # Valor RGB de teste
+    rgb_values = [154,205,50]  # Valor RGB de teste
     color_name = predict_color(rgb_values)
+    print(f"Valor RGB: {rgb_values}")
     print(f"Cor prevista: {color_name}")
+
+# Executar python -m inference.predict

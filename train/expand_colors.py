@@ -1,7 +1,7 @@
 import json
 import random
 
-def generate_variations(base_colors, num_variations=50, variation_range=10):
+def generate_variations(base_colors, num_variations=10, variation_range=10):
     """
     Gera variações de cores ajustando aleatoriamente os valores RGB.
     
