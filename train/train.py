@@ -7,6 +7,7 @@ from .preprocess import load_data
 from .config import EPOCHS, BATCH_SIZE, LEARNING_RATE
 import os
 import matplotlib.pyplot as plt
+from datetime import datetime
 
 def create_model():
     """
@@ -73,8 +74,13 @@ def train_model():
     # Treinar o modelo e capturar o histórico
     history = model.fit(entradas, respostas, epochs=EPOCHS, batch_size=BATCH_SIZE)
 
+   # Obter a data e hora atual no formato desejado
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M')
+
+    # Gerar o caminho completo para o arquivo com a data e hora no nome
+    model_filepath = os.path.join(os.path.dirname(__file__), 'model', f'{timestamp}_color_model.h5')
+
     # Salvar o modelo treinado
-    model_filepath = os.path.join(os.path.dirname(__file__), 'model', 'color_model.h5')
     model.save(model_filepath)
 
     # Gerar gráficos de perda e acurácia
