@@ -39,7 +39,7 @@ O projeto contém um endpoint POST que permite receber a requisição para recon
 ### 🚀 Como Executar
 - Requisitos:
     - Python 3.8+
-- Pacotes listados no arquivo requirements.txt. Para instalá-los, execute:
+- Pacotes listados no arquivo requirements.txt. Para instalá-los, renomeie o arquivo "requirements - Develop.txt" para "requirements.txt" e execute:
 ```python
 pip install -r requirements.txt
 ```
