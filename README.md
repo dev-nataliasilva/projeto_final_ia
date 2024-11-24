@@ -40,19 +40,19 @@ O projeto contém um endpoint POST que permite receber a requisição para recon
 - Requisitos:
     - Python 3.8+
 - Pacotes listados no arquivo requirements.txt. Para instalá-los, renomeie o arquivo "requirements - Develop.txt" para "requirements.txt" e execute:
-```python
+```bash
 pip install -r requirements.txt
 ```
 
 #### 1. Base de Dados (opcional)
 - Por padrão, existe uma base de dados nomeada colors.json, entretanto, é possível expandir essa base para obter resultados mais precisos. Para executar o script expand_colors.py:
-```python
+```bash
 python train/expand_colors.py
 ```
 
 #### 2. Treinamento
 - Execute o treinamento do modelo com o comando:
-```python
+```bash
 python -m train.train
 ```
 O treinamento irá gerar dois arquivos: o modelo treinado será salvo em train/model/ e os gráficos de perda e acurácia que serão salvos em train/loss_accuracy_plot_results/ para a análise de resultados. Os gráficos permitem visualizar como o modelo se comporta ao longo das épocas, ajudando a identificar possíveis overfitting ou underfitting.
@@ -62,7 +62,7 @@ O treinamento irá gerar dois arquivos: o modelo treinado será salvo em train/m
 - Renomeie o modelo treinado para "color_model.h5"
 - Para testar, vá até o script predict.py e modifique o valor da variável "rgb_values" para um valor RGB qualquer.
 - Execute o script de predição usando o comando:
-```python
+```bash
 python -m inference.predict
 ```
 - O resultado será exibido no console.
