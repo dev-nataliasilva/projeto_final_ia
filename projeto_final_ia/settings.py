@@ -21,7 +21,8 @@ SECRET_KEY = 'django-insecure-o)t8bpups7nbzsfnh#jw+b=px$a1iq0rtp7!cnr1yv*+%8!bie
 DEBUG = False  # Desativa o modo de debug em produção
 ALLOWED_HOSTS = [
     'ondesalvei-ia-f31a49c64a2d.herokuapp.com',  # Endereço da aplicação IA no Heroku
-    'ondesalvei-api-3e0bb38ffd71.herokuapp.com'  # Endereço da API no Heroku  
+    'https://ondesalvei-api-3e0bb38ffd71.herokuapp.com/,'  # Endereço da API no Heroku  
+    'https://ondesalvei-afacdb17af64.herokuapp.com/',  # Host do frontend no Heroku
     #'localhost',  # Para desenvolvimento local
     #'127.0.0.1',  # Para desenvolvimento local
 ]
