@@ -1,4 +1,3 @@
-# inference/predict.py
 import numpy as np
 import tensorflow as tf
 from .config import COLOR_CATEGORIES
