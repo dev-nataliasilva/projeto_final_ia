@@ -18,12 +18,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Diretório onde os arquiv
 
 # Configurações básicas de segurança
 SECRET_KEY = 'django-insecure-o)t8bpups7nbzsfnh#jw+b=px$a1iq0rtp7!cnr1yv*+%8!bie'  # Chave secreta para o Django
-DEBUG = False  # Desativa o modo de debug em produção
-ALLOWED_HOSTS = [
-    'ondesalvei-ia-f31a49c64a2d.herokuapp.com',  # Endereço da aplicação IA no Heroku
-    'ondesalvei-api-3e0bb38ffd71.herokuapp.com'  # Endereço da API no Heroku  
-    #'localhost',  # Para desenvolvimento local
-    #'127.0.0.1',  # Para desenvolvimento local
+DEBUG = True  # Desativa o modo de debug em produção
+ALLOWED_HOSTS = [ 
+    'localhost',  # Para desenvolvimento local
+    '127.0.0.1',  # Para desenvolvimento local
 ]
 
 # Aplicativos instalados - apenas os necessários para uma API
