@@ -1,10 +1,10 @@
 # Número de épocas para o treinamento. Define quantas vezes o modelo irá
 # passar por todos os dados de treinamento.
-EPOCHS = 40
+EPOCHS = 150
 
 # Tamanho do batch (lote) durante o treinamento. Define o número de amostras
 # que o modelo processa antes de atualizar os pesos.
-BATCH_SIZE = 32
+BATCH_SIZE = 16
 
 # Taxa de aprendizado usada pelo otimizador durante o treinamento. Determina
 # o tamanho dos passos dados ao ajustar os pesos do modelo.

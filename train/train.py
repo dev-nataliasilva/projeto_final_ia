@@ -8,6 +8,10 @@ from .config import EPOCHS, BATCH_SIZE, LEARNING_RATE  # Configurações do trei
 import os  # Biblioteca para manipulação de caminhos
 import matplotlib.pyplot as plt  # Biblioteca para geração de gráficos
 from datetime import datetime  # Biblioteca para trabalhar com data e hora
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import numpy as np
+import matplotlib.pyplot as plt
+from .config import COLOR_CATEGORIES  # Lista de categorias de cores definida na configuração
 
 def create_model():
     """
@@ -18,8 +22,11 @@ def create_model():
     - Uma camada de saída com 9 neurônios (um para cada classe) e ativação 'softmax'.
     """
     model = Sequential([
-        Dense(10, input_shape=(3,), activation='sigmoid'),  # Camada oculta
-        Dense(9, activation='softmax')  # Camada de saída
+        #Dense(10, input_shape=(3,), activation='sigmoid'),  # Camada oculta
+        Dense(256, input_shape=(3,), activation='relu', kernel_regularizer=tf.keras.regularizers.l2(0.001)),
+        Dense(128, activation='relu'),
+        Dense(64, activation='relu'),
+        Dense(9, activation='softmax')  # Camada de saída com 9 classes
     ])
     model.compile(
         loss='categorical_crossentropy',  # Função de perda para problemas de classificação
@@ -27,6 +34,49 @@ def create_model():
         metrics=['accuracy']  # Métrica para avaliar o desempenho do modelo
     )
     return model
+
+def plot_confusion_matrix(model, inputs, outputs, labels, timestamp):
+    """
+    Gera e salva a matriz de confusão para avaliar as previsões do modelo.
+
+    Args:
+        model: O modelo treinado.
+        inputs: As entradas (dados de teste ou validação).
+        outputs: As saídas (rótulos reais).
+        labels: As classes de saída (nomes das cores).
+        timestamp: Timestamp usado no nome do arquivo.
+    """
+    # Fazendo previsões no conjunto de validação ou teste
+    y_pred = model.predict(inputs)
+
+    # Convertendo as previsões e as saídas reais de one-hot para classes
+    y_pred_classes = np.argmax(y_pred, axis=1)
+    y_true_classes = np.argmax(outputs, axis=1)
+
+    # Gerando a matriz de confusão
+    cm = confusion_matrix(y_true_classes, y_pred_classes)
+
+    # Plotando a matriz de confusão
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
+    fig, ax = plt.subplots(figsize=(8, 8))
+    disp.plot(cmap='Blues', values_format='d', ax=ax)
+
+    # Nome do arquivo para salvar a matriz de confusão
+    confusion_matrix_filepath = os.path.join(
+        os.path.dirname(__file__),
+        'loss_accuracy_plot_results',
+        f'{timestamp}_{EPOCHS}_confusion_matrix.png'
+    )
+
+    # Salvar o gráfico como imagem
+    plt.title("Matriz de Confusão")
+    plt.savefig(confusion_matrix_filepath)
+
+    # Exibir o gráfico
+    plt.show()
+
+    # Retornar o caminho do arquivo
+    return confusion_matrix_filepath
 
 def plot_training_history(history, timestamp):
     """
@@ -93,7 +143,7 @@ def train_model():
     model = create_model()
 
     # Treinar o modelo e capturar o histórico de métricas
-    history = model.fit(inputs, outputs, epochs=EPOCHS, batch_size=BATCH_SIZE)
+    history = model.fit(inputs, outputs, validation_split=0.2, epochs=EPOCHS, batch_size=BATCH_SIZE)
 
     # Obter a data e hora atual no formato 'YYYYMMDD_HHMM' para uso no nome do arquivo
     timestamp = datetime.now().strftime('%Y%m%d_%H%M')
@@ -111,10 +161,14 @@ def train_model():
     # Gerar gráficos de perda e acurácia durante o treinamento
     plot_training_history(history, timestamp)
 
+    # Salvar a matriz de confusão
+    plot_confusion_matrix(model, inputs, outputs, COLOR_CATEGORIES, timestamp)
+
+
 # Bloco principal: executa o treinamento se o script for executado diretamente
 if __name__ == '__main__':
     train_model()
 
 # Observação:
 # Para executar este script, use o comando:
-# python -m inference.predict
+# python -m train.train
