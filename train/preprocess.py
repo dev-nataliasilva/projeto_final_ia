@@ -31,10 +31,10 @@ def load_data(filepath):
         # Iterar sobre os valores RGB associados a essa cor
         for rgb_value in color["valores"]:
             inputs.append(rgb_value)  # Adicionar o valor RGB à lista de entradas
-            outputs.append(rgb_value)  # Adicionar o código one-hot à lista de respostas
+            outputs.append(codigo_cor)  # Adicionar o código one-hot à lista de respostas
 
     # Converter as listas de entradas e respostas para arrays numpy
-    inputs = np.array(inputs)  # Array de cores RGB
+    inputs = np.array(inputs) / 255.0   # Array de cores RGB
     outputs = np.array(outputs)  # Array de categorias one-hot
 
     # Retornar as entradas e respostas processadas
