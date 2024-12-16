@@ -1,6 +1,6 @@
 # Número de épocas para o treinamento. Define quantas vezes o modelo irá
 # passar por todos os dados de treinamento.
-EPOCHS = 150
+EPOCHS = 70
 
 # Tamanho do batch (lote) durante o treinamento. Define o número de amostras
 # que o modelo processa antes de atualizar os pesos.

@@ -82,7 +82,7 @@ input_file = 'train/data/colors.json'  # Arquivo de entrada com as cores origina
 output_file = 'train/data/colors_expandido.json'  # Arquivo de saída para as cores balanceadas e expandidas
 
 # Gera a base de dados expandida e balanceada
-expand_and_balance_colors(input_file, output_file, target_size=1000, variation_range=10)
+expand_and_balance_colors(input_file, output_file, target_size=500, variation_range=10)
 
 if __name__ == '__main__':
     print("Base de dados sendo balanceada e formatada...")
