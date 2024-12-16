@@ -20,7 +20,7 @@ def predict_color(rgb_values):
 # Exemplo de uso:
 if __name__ == '__main__':
     # Valores RGB para teste (exemplo: RGB para a cor roxa)
-    rgb_values = [ 125,100,11]  # Valor RGB de teste
+    rgb_values = [118,181,45]  # Valor RGB de teste
     color_name = predict_color(rgb_values)  # Prever o nome da cor
     print(f"Valor RGB: {rgb_values}")  # Exibe os valores RGB de entrada
     print(f"Cor prevista: {color_name}")  # Exibe o nome da cor prevista
